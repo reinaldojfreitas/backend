@@ -1,0 +1,28 @@
+package br.senac.rj.backend.service;
+
+import br.senac.rj.backend.dao.UsuarioDao;
+import br.senac.rj.backend.entity.Usuario;
+import jakarta.ws.rs.core.Response;
+
+public class UsuarioService {
+    private final UsuarioDao dao = new UsuarioDao();
+    private final AuthService authService = new AuthService();
+
+    public Response salvar(Usuario usuario) {
+        Usuario UsuarioSalvo = dao.salvar(usuario);
+        if (UsuarioSalvo == null) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        return Response.ok(UsuarioSalvo).build();
+    }
+
+    public Response login(String email, String senha) {
+        Usuario usuario = dao.buscarPorEmailSenha(email, senha);
+        if (usuario == null) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        }
+        String token = authService.gerarToken(email);
+        return Response.ok(token).build();
+    }
+
+}

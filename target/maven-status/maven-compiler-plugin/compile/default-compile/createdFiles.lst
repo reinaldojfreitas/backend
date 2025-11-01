@@ -1,0 +1,14 @@
+br\senac\rj\backend\dao\AlunoDao.class
+br\senac\rj\backend\service\TurmaService.class
+br\senac\rj\backend\Main.class
+br\senac\rj\backend\service\UsuarioService.class
+br\senac\rj\backend\controller\UsuarioController.class
+br\senac\rj\backend\dao\TurmaDao.class
+br\senac\rj\backend\config\JaxRsApplication.class
+br\senac\rj\backend\entity\Turma.class
+br\senac\rj\backend\controller\AlunoController.class
+br\senac\rj\backend\service\AlunoService.class
+br\senac\rj\backend\controller\TurmaController.class
+br\senac\rj\backend\dao\UsuarioDao.class
+br\senac\rj\backend\entity\Aluno.class
+br\senac\rj\backend\entity\Usuario.class
