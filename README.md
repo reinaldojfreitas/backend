@@ -42,7 +42,7 @@ mvn clean install
 java -jar target/backend.jar
 \`\`\`
 
-API disponível em: \`http://localhost:8080/api\`
+API disponível em: \`http://localhost:8080/api/`
 
 ---
 
