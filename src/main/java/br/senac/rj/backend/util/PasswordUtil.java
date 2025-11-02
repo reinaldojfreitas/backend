@@ -4,6 +4,11 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * 
+ * @author reinaldo.jose
+ * Faz tratamento da senha.
+ */
 public class PasswordUtil {
 
     // Gera hash da senha usando SHA-256

@@ -6,6 +6,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+/**
+ * 
+ * @author reinaldo.jose
+ * Entidade que representa a tabela usuario.
+ */
 @Entity
 @Table(name = "usuario")
 @Data

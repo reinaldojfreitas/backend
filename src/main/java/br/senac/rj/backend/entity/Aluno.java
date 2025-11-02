@@ -10,6 +10,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+/**
+ * 
+ * @author reinaldo.jose
+ * Entidade que representa a tabela aluno.
+ */
 @Entity
 @Table(name = "aluno")
 @Data

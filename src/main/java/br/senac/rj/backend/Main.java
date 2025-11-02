@@ -5,6 +5,11 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.servlet.ServletContainer;
 
+/**
+ * 
+ * @author reinaldo.jose
+ * Classe que configura e inicia o servidor.
+ */
 public class Main {
     public static void main(String[] args) throws Exception {
         // Configura o servidor HTTP Jetty para escutar na port 8080

@@ -1,11 +1,14 @@
 package br.senac.rj.backend.service;
 
 import br.senac.rj.backend.dao.TurmaDao;
-import br.senac.rj.backend.entity.Aluno;
 import br.senac.rj.backend.entity.Turma;
-
 import jakarta.ws.rs.core.Response;
 
+/**
+ * 
+ * @author reinaldo.jose
+ * Classe que tem a função de centralizar a lógica de negócio relacionada à entidade Turma.
+ */
 public class TurmaService {
     private final TurmaDao dao = new TurmaDao();
 

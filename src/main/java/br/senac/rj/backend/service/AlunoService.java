@@ -5,6 +5,11 @@ import br.senac.rj.backend.entity.Aluno;
 
 import jakarta.ws.rs.core.Response;
 
+/**
+ * 
+ * @author reinaldo.jose
+ * Classe que tem a função de centralizar a lógica de negócio relacionada à entidade Aluno.
+ */
 public class AlunoService {
     private final AlunoDao dao = new AlunoDao();
 

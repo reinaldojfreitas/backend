@@ -4,6 +4,11 @@ import br.senac.rj.backend.dao.UsuarioDao;
 import br.senac.rj.backend.entity.Usuario;
 import jakarta.ws.rs.core.Response;
 
+/**
+ * 
+ * @author reinaldo.jose
+ * Classe que tem a função de centralizar a lógica de negócio relacionada à entidade Usuario.
+ */
 public class UsuarioService {
     private final UsuarioDao dao = new UsuarioDao();
     private final AuthService authService = new AuthService();

@@ -1,29 +1,58 @@
 package br.senac.rj.backend.service;
 
-import java.security.Key;
-import java.util.Date;
-
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
-public class AuthService {
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
+import java.util.Date;
 
-    // Chave secreta para assinatura (em produção, guarde em lugar seguro)
-    private static final Key KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+/**
+ * 
+ * @author reinaldo.jose
+ * Classe que faz o tratamento do token gerado pelo endpoint /login.
+ */
+public class AuthService {
+    private static final String CHAVE_SECRETA = "minha-chave-secreta-supersegura-deve-ter-mais-de-32-bytes"; // deve ficar em arquivos externos
+    private static final long TEMPO_EXPIRACAO = 1000 * 60 * 60; // 1 hora
+
+    // Cria a chave a partir da string
+    private SecretKey getChave() {
+        return Keys.hmacShaKeyFor(CHAVE_SECRETA.getBytes(StandardCharsets.UTF_8));
+    }
 
     public String gerarToken(String email) {
-        long expMillis = System.currentTimeMillis() + 3600_000; // 1 hora de validade
-        Date exp = new Date(expMillis);
+        Date agora = new Date();
+        Date expiracao = new Date(agora.getTime() + TEMPO_EXPIRACAO);
 
-        String jwt = Jwts.builder()
-                .setSubject(email)           // identifica o usuário
-                .setIssuedAt(new Date())     // data de emissão
-                .setExpiration(exp)          // data de expiração
-                .signWith(KEY)               // assina com a chave secreta
+        return Jwts.builder()
+                .setSubject(email)
+                .setIssuedAt(agora)
+                .setExpiration(expiracao)
+                .signWith(getChave(), SignatureAlgorithm.HS256)
                 .compact();
+    }
 
-        return jwt;
+    public boolean validarToken(String token) {
+        try {
+            Jwts.parserBuilder()
+                .setSigningKey(getChave())
+                .build()
+                .parseClaimsJws(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String getEmailDoToken(String token) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(getChave())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+        return claims.getSubject();
     }
 }
-
