@@ -21,6 +21,7 @@
 		<hibernate.version>6.5.2.Final</hibernate.version>
 		<jakarta.persistence.version>3.1.0</jakarta.persistence.version>
 		<mysql.version>8.1.0</mysql.version>
+		<jsonwebtoken.version>0.11.5</jsonwebtoken.version>
 	</properties>
 
 	<repositories>
@@ -83,8 +84,6 @@
 			<artifactId>jetty-servlet</artifactId>
 			<version>${jetty.version}</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.eclipse.jetty</groupId> <artifactId>jetty-webapp</artifactId> 
-			<version>${jetty.version}</version> </dependency> -->
 
 		<!-- Jersey HK2 DI -->
 		<dependency>
@@ -100,25 +99,24 @@
 			<version>${jersey.version}</version>
 		</dependency>
 
-		<!-- JWT -->
+		<!-- Tratamento de token JWT -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
-			<version>0.11.5</version>
+			<version>${jsonwebtoken.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-impl</artifactId>
-			<version>0.11.5</version>
+			<version>${jsonwebtoken.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-jackson</artifactId>
-			<version>0.11.5</version>
+			<version>${jsonwebtoken.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-
 
 	</dependencies>
 
