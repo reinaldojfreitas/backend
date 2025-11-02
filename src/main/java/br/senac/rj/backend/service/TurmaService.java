@@ -15,7 +15,9 @@ public class TurmaService {
     public Response salvar(Turma t) {
         Turma TurmaSalva = dao.salvar(t);
         if (TurmaSalva == null) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response.status(Response.Status.BAD_REQUEST)
+            		.entity("{\"erro\":\"Não foi possível salvar a turma.\"}")
+            		.build();
         }
         return Response.ok(TurmaSalva).build();
     }
@@ -23,7 +25,9 @@ public class TurmaService {
     public Response buscar(Long id) {
     	Turma TurmaObtida = dao.buscarPorId(id);
         if (TurmaObtida == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_FOUND)
+            		.entity("{\"erro\":\"Turma não encontrada.\"}")
+            		.build();
         }
         return Response.ok(TurmaObtida).build();
     }

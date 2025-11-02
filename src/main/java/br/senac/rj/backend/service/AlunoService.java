@@ -16,7 +16,9 @@ public class AlunoService {
     public Response salvar(Aluno aluno) {
         Aluno alunoSalvo = dao.salvar(aluno);
         if (alunoSalvo == null) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response.status(Response.Status.BAD_REQUEST)
+            		.entity("{\"erro\":\"Não foi possível salvar o aluno.\"}")
+            		.build();
         }
         return Response.ok(alunoSalvo).build();
     }
@@ -24,7 +26,9 @@ public class AlunoService {
     public Response buscar(Long id) {
         Aluno AlunoObtido = dao.buscarPorId(id);
         if (AlunoObtido == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.NOT_FOUND)
+            		.entity("{\"erro\":\"Aluno não encontrado.\"}")
+            		.build();
         }
         return Response.ok(AlunoObtido).build();
     }

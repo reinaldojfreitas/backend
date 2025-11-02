@@ -16,7 +16,9 @@ public class UsuarioService {
     public Response salvar(Usuario usuario) {
         Usuario UsuarioSalvo = dao.salvar(usuario);
         if (UsuarioSalvo == null) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response.status(Response.Status.BAD_REQUEST)
+            		.entity("{\"erro\":\"Não foi possível salvar o usuário.\"}")
+            		.build();
         }
         return Response.ok(UsuarioSalvo).build();
     }
@@ -24,7 +26,9 @@ public class UsuarioService {
     public Response login(String email, String senha) {
         Usuario usuario = dao.buscarPorEmailSenha(email, senha);
         if (usuario == null) {
-            return Response.status(Response.Status.UNAUTHORIZED).build();
+            return Response.status(Response.Status.UNAUTHORIZED)
+            		.entity("{\"erro\":\"Dados incorretos.\"}")
+            		.build();
         }
         String token = authService.gerarToken(email);
         return Response.ok(token).build();
