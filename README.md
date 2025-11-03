@@ -70,7 +70,7 @@ curl -X POST http://localhost:8080/api/usuario/login \\
 **Incluir**
 
 curl -X POST http://localhost:8080/api/turma/salvar \\  
-     -H "Authorization: Bearer token-aqui" \\  
+     -H "Authorization: Bearer \<token-aqui"\> \\  
      -H "Content-Type: application/json" \\  
      -d '{"descricao": "2025.1N"}'
 
