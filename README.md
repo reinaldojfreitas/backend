@@ -51,13 +51,13 @@ API disponível em: \`http://localhost:8080/api/`
 
 **Exemplos via curl:**
 
-Incluir/Atualizar
+**Incluir/Atualizar**
 
 curl -X POST http://localhost:8080/api/usuario/salvar \\  
      -H "Content-Type: application/json" \\  
      -d '{"email": "teste@teste.com", "nome":"xxx", "senha":"12345"}'
 
-login
+**login**
 
 curl -X POST http://localhost:8080/api/usuario/login \\  
      -H "Content-Type: application/json" \\  
@@ -67,21 +67,21 @@ curl -X POST http://localhost:8080/api/usuario/login \\
 
 **Exemplos via curl:**
 
-Incluir
+**Incluir**
 
 curl -X POST http://localhost:8080/api/turma/salvar \\  
      -H "Authorization: Bearer token-aqui" \\  
      -H "Content-Type: application/json" \\  
      -d '{"descricao": "2025.1N"}'
 
-Atualizar
+**Atualizar**
 
 curl -X POST http://localhost:8080/api/turma/salvar \\  
      -H "Authorization: Bearer token-aqui" \\  
      -H "Content-Type: application/json" \\  
      -d '{"id": 1, "descricao": "2025.2N"}'
 
-Consultar
+**Consultar**
 
 curl -X GET http://localhost:8080/api/turma/1 \\  
      -H "Authorization: Bearer token-aqui"
@@ -92,21 +92,21 @@ curl -X GET http://localhost:8080/api/turma/1 \\
 
 > Senhas são armazenadas como hash SHA-256.
 
-Incluir
+**Incluir**
 
 curl -X POST http://localhost:8080/api/aluno/salvar \
      -H "Authorization: Bearer token-aqui" \
      -H "Content-Type: application/json" \
      -d '{"nome": "Zezinho", "turma" : {"id":1}}'
 
-Atualizar
+**Atualizar**
 
 curl -X POST http://localhost:8080/api/aluno/salvar \
      -H "Authorization: Bearer token-aqui" \
      -H "Content-Type: application/json" \
      -d '{"id": 1, "nome": "Maria", "turma" : {"id":1}}'
 
-Consultar
+**Consultar**
 
 curl -X GET http://localhost:8080/api/aluno/1 \
      -H "Authorization: Bearer token-aqui"
