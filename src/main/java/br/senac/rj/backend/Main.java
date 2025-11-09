@@ -40,6 +40,7 @@ public class Main {
         // Inicia o servidor
         server.start();
         System.out.println("Servidor iniciado em http://localhost:" + port + "/api");
+        System.out.println("Alteração feita pelo colega de equipe");
         
         server.join();
     }
