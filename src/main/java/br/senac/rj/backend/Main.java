@@ -1,9 +1,14 @@
 package br.senac.rj.backend;
 
+import java.util.EnumSet;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.servlet.ServletContainer;
+
+import br.senac.rj.backend.config.CorsFilter;
+import jakarta.servlet.DispatcherType;
 
 /**
  * 
@@ -33,6 +38,9 @@ public class Main {
                 "br.senac.rj.backend.config.JaxRsApplication"
         );
         
+        // Configuração do filtro de Cors
+        context.addFilter(CorsFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST));
+        
         // Define o contexto que irá tratar as requisições que chegarem no servidor
         // O contexto contém os servlets
         server.setHandler(context);
@@ -40,7 +48,6 @@ public class Main {
         // Inicia o servidor
         server.start();
         System.out.println("Servidor iniciado em http://localhost:" + port + "/api");
-        System.out.println("Alteração feita por colega da equipe");
         
         server.join();
     }
